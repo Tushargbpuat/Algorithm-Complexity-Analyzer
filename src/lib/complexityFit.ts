@@ -78,4 +78,4 @@ export function estimateComplexityLocal(
   const score = Math.max(0, 1 - bestRes / total);
 
   return { label: best, score, residuals };
-}
+
