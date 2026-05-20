@@ -129,6 +129,7 @@ function BenchmarkTooltip({
   active?: boolean;
   payload?: TooltipPayloadEntry[];
   metric: keyof typeof METRIC_LABELS;
+  [key: string]: any; // Added this index signature to accept Recharts injected props
 }) {
   if (!active || !payload?.length) return null;
 
