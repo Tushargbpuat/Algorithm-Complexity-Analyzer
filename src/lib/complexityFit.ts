@@ -25,9 +25,13 @@ function residualSum(
   const ys = points.map((p) => p.timeMs);
   const sumXX = xs.reduce((s, x) => s + x * x, 0);
   const sumXY = xs.reduce((s, x, i) => s + x * ys[i], 0);
+  
   if (sumXX === 0) return Number.POSITIVE_INFINITY;
+  
   const a = sumXY / sumXX;
-  return points.reduce((acc, p, i) => {
+  
+  // FIX: Changed 'p' to '_' to resolve the TS6133 unused variable error
+  return points.reduce((acc, _, i) => {
     const pred = a * xs[i];
     const d = ys[i] - pred;
     return acc + d * d;
@@ -74,4 +78,5 @@ export function estimateComplexityLocal(
   const score = Math.max(0, 1 - bestRes / total);
 
   return { label: best, score, residuals };
+}return { label: best, score, residuals };
 }
